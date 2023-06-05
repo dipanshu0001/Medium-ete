@@ -8,22 +8,22 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const LandingRecommendedPost = ({ data, userDetails }) => {
-
-  const navigate = useNavigate()
-  const addToList = async(id) => {
+  const navigate = useNavigate();
+  const addToList = async (id) => {
     const body = {
-      userid: userDetails?._id
-    }
-    console.log(body)
-    await axios.post(`/api/user/list/${id}`, 
-                      body, 
-                      ).then((res) => {
-                        console.log('list added successfully')
-                        navigate('/me/lists')
-                    }).catch((err) => {
-                      console.log(err.response.data.message)
-                    })
-  }
+      userid: userDetails?._id,
+    };
+    console.log(body);
+    await axios
+      .post(`http://localhost:8000/api/user/list/${id}`, body)
+      .then((res) => {
+        console.log("list added successfully");
+        navigate("/me/lists");
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
+  };
   return (
     <div className="landing-recommended-post">
       <div className="landing-recommended-post-container">
@@ -33,8 +33,10 @@ const LandingRecommendedPost = ({ data, userDetails }) => {
             <span>{data?.userDetails[0]?.displayName}</span>
           </div>
           <div className="landing-content">
-            <Link to = {`/story/${data?._id}`}>{reactHtmlParser(data?.title)}</Link>
-            
+            <Link to={`/story/${data?._id}`}>
+              {reactHtmlParser(data?.title)}
+            </Link>
+
             {/* {truncate(reactHtmlParser(data?.title), 20)} */}
           </div>
           <div className="landing-footer">

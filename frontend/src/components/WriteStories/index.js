@@ -10,7 +10,7 @@ import { selectUserId } from "../../features/userIdSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Index = ({userDetails}) => {
+const Index = ({ userDetails }) => {
   const [title, setTitle] = React.useState("");
 
   const [desc, setDesc] = React.useState("");
@@ -31,7 +31,7 @@ const Index = ({userDetails}) => {
       "Content-Type": "application/json",
     };
     await axios
-      .post("/api/stories", body, confHeader)
+      .post("http://localhost:8000/api/stories", body, confHeader)
       .then((res) => {
         if (res.data.status) {
           console.log(res.data.message);
@@ -174,6 +174,7 @@ const Index = ({userDetails}) => {
           },
         }}
       />
+      <input type="file" />
       {/* <ContentEditable
         html={desc} // innerHTML of the editable div
         style={{

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./css/RecommendedPost.css";
-import reactHtmlParser from 'react-html-parser'
+import reactHtmlParser from "react-html-parser";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const RecommededPosts = () => {
   useEffect(() => {
     async function getStories() {
       await axios
-        .get("/api/stories")
+        .get("http://localhost:8000/api/stories")
         .then((res) => {
           // console.log(res.data.data);
           setStories(res.data.data?.slice(0, 9));
@@ -57,11 +57,10 @@ const RecommededPosts = () => {
         <div className="rcm-post-wrapper">
           <div className="rcm-post-container">
             <div className="rcm-posts">
-              {
-                stories?.map((data, index) => (
-                  <Link to = {`/story/${data?._id}`}>
-                    <React.Fragment key={index}>
-                        <div className="rcm-post">
+              {stories?.map((data, index) => (
+                <Link to={`/story/${data?._id}`}>
+                  <React.Fragment key={index}>
+                    <div className="rcm-post">
                       <div className="rcm-post-left">
                         <span>{index + 1}</span>
                       </div>
@@ -72,24 +71,25 @@ const RecommededPosts = () => {
                               src={data?.userDetails[0]?.photoURL}
                               alt="logo"
                             />
-                            <span>{data?.userDetails[0]?.displayName} Blog</span>
+                            <span>
+                              {data?.userDetails[0]?.displayName} Blog
+                            </span>
                           </div>
                           <div className="content">
-                            <p>
-                              {reactHtmlParser(data?.title)}
-                            </p>
+                            <p>{reactHtmlParser(data?.title)}</p>
                           </div>
                           <div className="footer">
-                            <span>{moment(data?.created_at).format('DD MM, YYYY')} · 2 min read </span>
+                            <span>
+                              {moment(data?.created_at).format("DD MM, YYYY")} ·
+                              2 min read{" "}
+                            </span>
                           </div>
                         </div>
                       </div>
                     </div>
-                    </React.Fragment>
-                  </Link>
-                
-              ))
-              }
+                  </React.Fragment>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

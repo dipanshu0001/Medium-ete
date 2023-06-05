@@ -164,7 +164,10 @@ const LandHeader = () => {
                         src={
                           <Image
                             preview={false}
-                            src={user?.providerData?.photoURL ?? 'http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3'}
+                            src={
+                              user?.providerData?.photoURL ??
+                              "http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3"
+                            }
                           />
                         }
                       />

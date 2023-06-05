@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Skeleton } from "antd";
 
-const StoriesMain = ({userDetails}) => {
+const StoriesMain = ({ userDetails }) => {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (userDetails?._id) {
       async function getStories() {
-        setLoading(true)
+        setLoading(true);
         await axios
-          .get(`/api/stories/user/${userDetails?._id}`)
+          .get(`http://localhost:8000/api/stories/user/${userDetails?._id}`)
           .then((res) => {
             console.log(res.data);
             setStories(res.data.data.reverse());
@@ -60,9 +60,7 @@ const StoriesMain = ({userDetails}) => {
               </>
             );
           })}
-          {
-            stories?.length === 0 && `No stories found`
-          }
+          {stories?.length === 0 && `No stories found`}
           {stories?.map((data) => (
             <Stories key={data?._id} data={data} />
           ))}

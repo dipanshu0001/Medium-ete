@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const url =
-  "mongodb://akky:KdaWNLd6wxADLvy@cluster0-shard-00-00.rfatk.mongodb.net:27017,cluster0-shard-00-01.rfatk.mongodb.net:27017,cluster0-shard-00-02.rfatk.mongodb.net:27017/medium?ssl=true&replicaSet=atlas-i16i1b-shard-0&authSource=admin&retryWrites=true&w=majority";
+  "mongodb+srv://chetan9129:c99p54c66@cluster0.unak2po.mongodb.net/medium?retryWrites=true&w=majority";
 module.exports.connect = () => {
   mongoose
     .connect(url, {

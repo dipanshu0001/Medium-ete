@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Skeleton } from "antd";
 
-const LandingMainPage = ({userDetails}) => {
+const LandingMainPage = ({ userDetails }) => {
   const [tab, setTab] = useState(0);
   console.log(userDetails);
   const [stories, setStories] = useState();
@@ -17,7 +17,7 @@ const LandingMainPage = ({userDetails}) => {
   useEffect(() => {
     async function getStories() {
       await axios
-        .get("/api/stories")
+        .get("http://localhost:8000/api/stories")
         .then((res) => {
           // console.log(res.data.data);
           setLoading(false);
@@ -34,10 +34,12 @@ const LandingMainPage = ({userDetails}) => {
   useEffect(() => {
     async function getUsers() {
       await axios
-        .get("/api/user")
+        .get("http://localhost:8000/api/user")
         .then((res) => {
           if (res.data.status) {
-            let _users = res.data?.data?.filter((data) => data?._id !== userDetails?._id)
+            let _users = res.data?.data?.filter(
+              (data) => data?._id !== userDetails?._id
+            );
             setUsers(_users);
             setUserLoading(false);
           }
@@ -112,7 +114,11 @@ const LandingMainPage = ({userDetails}) => {
               })}
 
               {stories?.map((data) => (
-                <LandingRecommendedPost userDetails = {userDetails} key={data?._id} data={data} />
+                <LandingRecommendedPost
+                  userDetails={userDetails}
+                  key={data?._id}
+                  data={data}
+                />
               ))}
 
               {/* <LandingRecommendedPost />
@@ -151,7 +157,6 @@ const LandingMainPage = ({userDetails}) => {
               );
             })}
 
-            
             {/* <WhoToFollow />
             <WhoToFollow />
             <WhoToFollow />

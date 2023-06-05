@@ -45,7 +45,8 @@ router.get("/", async (req, res) => {
             as: "userDetails", //output array field
           },
         },
-      ]).sort({created_at: -1})
+      ])
+      .sort({ created_at: -1 })
       .exec()
       .then((doc) => {
         res.status(200).send({

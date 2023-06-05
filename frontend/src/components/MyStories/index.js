@@ -2,11 +2,11 @@ import React from "react";
 import LandHeader from "../LandingPage/LandHeader";
 import StoriesMain from "./StoriesMain";
 
-const Index = ({userDetails}) => {
+const Index = ({ userDetails }) => {
   return (
     <div>
       <LandHeader />
-      <StoriesMain userDetails = {userDetails} />
+      <StoriesMain userDetails={userDetails} />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  reading_list: []
+  reading_list: [],
 });
 
 module.exports = mongoose.model("Users", userSchema);

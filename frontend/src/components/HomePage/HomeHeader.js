@@ -5,12 +5,15 @@ import "./css/HomeHeader.css";
 
 function HomeHeader({ signInPopup, backgroundColor }) {
   const [modal, setModal] = React.useState(false);
-  const location = useLocation()
+  const location = useLocation();
   return (
     <header>
-      <div style = {{
-        backgroundColor: backgroundColor,
-      }} className="header">
+      <div
+        style={{
+          backgroundColor: backgroundColor,
+        }}
+        className="header"
+      >
         <div className="header-left">
           <Link to={"/"}>
             <svg height={25} viewBox="0 0 3940 610" className="bn bo">
@@ -21,25 +24,43 @@ function HomeHeader({ signInPopup, backgroundColor }) {
         <div className="header-right">
           <div className="header-right-options-button">
             <div className="header-right-option">
-              <Link to ='/our-story' ><span style={{
-                fontWeight: location.pathname === '/our-story' && 'bold',
-                textDecoration: location.pathname === '/our-story' && 'underline'
-              }}>Our story</span></Link>
-              
+              <Link to="/our-story">
+                <span
+                  style={{
+                    fontWeight: location.pathname === "/our-story" && "bold",
+                    textDecoration:
+                      location.pathname === "/our-story" && "underline",
+                  }}
+                >
+                  Our story
+                </span>
+              </Link>
             </div>
             <div className="header-right-option">
-            <Link to ='/membership' >
-              <span style={{
-                fontWeight: location.pathname === '/membership' && 'bold',
-                textDecoration: location.pathname === '/membership' && 'underline'
-              }}>Membership</span></Link>
+              <Link to="/membership">
+                <span
+                  style={{
+                    fontWeight: location.pathname === "/membership" && "bold",
+                    textDecoration:
+                      location.pathname === "/membership" && "underline",
+                  }}
+                >
+                  Membership
+                </span>
+              </Link>
             </div>
             <div className="header-right-option">
-            <Link to ='/creators' >
-              <span style={{
-                fontWeight: location.pathname === '/creators' && 'bold',
-                textDecoration: location.pathname === '/creators' && 'underline'
-              }} >Write</span></Link>
+              <Link to="/creators">
+                <span
+                  style={{
+                    fontWeight: location.pathname === "/creators" && "bold",
+                    textDecoration:
+                      location.pathname === "/creators" && "underline",
+                  }}
+                >
+                  Write
+                </span>
+              </Link>
             </div>
             <div className="header-right-option">
               <span onClick={() => setModal(true)}>Sign In</span>
