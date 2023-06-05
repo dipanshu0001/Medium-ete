@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const storiesDB = require("../models/Stories");
+const { find } = require("../models/User");
 
 router.post("/", async (req, res) => {
   try {
@@ -36,16 +37,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     await storiesDB
-      .aggregate([
-        {
-          $lookup: {
-            from: "users", //collection to join
-            localField: "userId", //field from input document
-            foreignField: "_id",
-            as: "userDetails", //output array field
-          },
-        },
-      ])
+      .find()
       .sort({ created_at: -1 })
       .exec()
       .then((doc) => {
@@ -108,19 +100,7 @@ router.get("/:id", async (req, res) => {
 router.get("/user/:uid", async (req, res) => {
   try {
     await storiesDB
-      .aggregate([
-        {
-          $match: { userId: mongoose.Types.ObjectId(req.params.uid) },
-        },
-        //   {
-        //     $lookup: {
-        //       from: "users", //collection to join
-        //       localField: "userId", //field from input document
-        //       foreignField: "_id",
-        //       as: "userDetails", //output array field
-        //     },
-        //   },
-      ])
+    find()
       .exec()
       .then((doc) => {
         res.status(200).send({

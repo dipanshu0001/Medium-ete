@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+
 
 const express = require("express");
 const cors = require("cors");
@@ -8,7 +6,7 @@ const path = require("path");
 const app = express();
 const router = require("./routers");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 const db = require("./db");
 db.connect();
